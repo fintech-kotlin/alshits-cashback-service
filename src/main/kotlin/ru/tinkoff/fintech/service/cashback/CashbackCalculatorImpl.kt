@@ -1,6 +1,7 @@
 package ru.tinkoff.fintech.service.cashback
 
 import ru.tinkoff.fintech.model.TransactionInfo
+import ru.tinkoff.fintech.service.cashback.strategies.*
 
 internal const val LOYALTY_PROGRAM_BLACK = "BLACK"
 internal const val LOYALTY_PROGRAM_ALL = "ALL"
@@ -11,8 +12,18 @@ internal const val MCC_BEER = 5921
 
 class CashbackCalculatorImpl : CashbackCalculator {
 
+    private val cashbackCalculator : CashbackCalculator
+
+    init {
+        val beerCashbackStrategy = BeerCashbackStrategy()
+        val computerSoftwareCashbackStrategy = ComputerSoftwareCashbackStrategy(beerCashbackStrategy)
+        val blackCashbackStrategy = BlackCashbackStrategy(computerSoftwareCashbackStrategy)
+        val limitReachedCashbackStrategy = LimitReachedCashbackStrategy(blackCashbackStrategy)
+        cashbackCalculator = TotalLimitCashbackDecorator(EvilSupplyDecorator(limitReachedCashbackStrategy))
+    }
+
     override fun calculateCashback(transactionInfo: TransactionInfo): Double {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return cashbackCalculator.calculateCashback(transactionInfo)
     }
 
 }
