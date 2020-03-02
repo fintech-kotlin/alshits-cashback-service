@@ -20,7 +20,7 @@ class CashbackCalculatorTest {
             lastName = "testLastName"
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(10.0, cashbackSum)
+        assertEquals(10.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -33,7 +33,7 @@ class CashbackCalculatorTest {
             lastName = "testLastName"
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(0.0, cashbackSum)
+        assertEquals(0.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -46,7 +46,7 @@ class CashbackCalculatorTest {
             lastName = "testLastName"
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(500.0, cashbackSum)
+        assertEquals(500.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -59,7 +59,7 @@ class CashbackCalculatorTest {
             lastName = "testLastName"
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(13.32, cashbackSum)
+        assertEquals(13.32, cashbackSum,0.0001)
     }
 
 
@@ -74,7 +74,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_SOFTWARE
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(30.0, cashbackSum)
+        assertEquals(30.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -88,7 +88,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_SOFTWARE
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(6.3, cashbackSum)
+        assertEquals(6.3, cashbackSum,0.0001)
     }
 
     @Test
@@ -102,7 +102,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_SOFTWARE
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(4.0, cashbackSum)
+        assertEquals(4.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -116,7 +116,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_SOFTWARE
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(11.0, cashbackSum)
+        assertEquals(11.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -130,7 +130,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_SOFTWARE
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(63.0, cashbackSum)
+        assertEquals(63.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -144,7 +144,7 @@ class CashbackCalculatorTest {
             mccCode = 1234
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(0.0, cashbackSum)
+        assertEquals(0.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -158,7 +158,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_BEER
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(350.0, cashbackSum)
+        assertEquals(350.0, cashbackSum, 0.0001)
     }
 
     @Test
@@ -172,7 +172,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_BEER
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(500.0, cashbackSum)
+        assertEquals(500.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -186,7 +186,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_BEER
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(250.0, cashbackSum)
+        assertEquals(250.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -200,7 +200,7 @@ class CashbackCalculatorTest {
             mccCode = MCC_BEER
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(150.0, cashbackSum)
+        assertEquals(150.0, cashbackSum,0.0001)
     }
 
     @Test
@@ -214,10 +214,10 @@ class CashbackCalculatorTest {
             mccCode = MCC_BEER
         )
         val cashbackSum = observable.calculateCashback(transactionInfo)
-        assertEquals(150.0, cashbackSum)
+        assertEquals(150.0, cashbackSum,0.0001)
     }
 
-    val monthWithFirstLetter = mapOf(
+    private val monthWithFirstLetter = mapOf(
         Month.JANUARY.value to 'я',
         Month.FEBRUARY.value to 'ф',
         Month.MARCH.value to 'м',
